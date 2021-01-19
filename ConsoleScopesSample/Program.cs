@@ -1,34 +1,45 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
+using System;
 using System.Threading.Tasks;
 
 namespace ConsoleScopesSample
 {
     internal class Program
     {
-        private static async Task Main(string[] args)
+        private static Task Main(string[] args)
         {
-            var configuration = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json", optional: true)
-                .AddEnvironmentVariables()
-                .AddCommandLine(args)
-                .Build();
+            using IHost host = CreateHostBuilder(args).Build();
 
-            var serviceProvider = new ServiceCollection()
-                .AddLogging(builder => builder.AddConsole())
-                .AddSingleton<IConfiguration>(configuration)
-                .AddScoped<IStartUp, StartUp>()
-                .AddScoped<IService, Service>()
-                .BuildServiceProvider();
+            ExemplifyScoping(host.Services, "Scope 1");
+            ExemplifyScoping(host.Services, "Scope 2");
 
-            ILogger logger = serviceProvider.GetService<ILoggerFactory>().CreateLogger<Program>();
-            logger.LogInformation("You now have access to a complete IServiceProvider (IOC) through variable serviceProvider");
+            return host.RunAsync();
+        }
 
-            await serviceProvider
-                .GetService<IStartUp>()
-                .RunAsync();
+        private static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureServices(services =>
+                    services.AddTransient<ITransientOperation, DefaultOperation>()
+                            .AddScoped<IScopedOperation, DefaultOperation>()
+                            .AddSingleton<ISingletonOperation, DefaultOperation>()
+                            .AddTransient<OperationLogger>());
+
+        private static void ExemplifyScoping(IServiceProvider services, string scope)
+        {
+            using IServiceScope serviceScope = services.CreateScope();
+            IServiceProvider provider = serviceScope.ServiceProvider;
+
+            OperationLogger logger = provider.GetRequiredService<OperationLogger>();
+            logger.LogOperations($"{scope}-Call 1 .GetRequiredService<OperationLogger>()");
+
+            Console.WriteLine("...");
+
+            logger = provider.GetRequiredService<OperationLogger>();
+            logger.LogOperations($"{scope}-Call 2 .GetRequiredService<OperationLogger>()");
+
+            Console.WriteLine();
         }
     }
 }

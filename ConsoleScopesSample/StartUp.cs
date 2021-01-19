@@ -1,24 +1,49 @@
-﻿using Microsoft.Extensions.Logging;
-
-using System.Threading.Tasks;
+﻿using System;
 
 namespace ConsoleScopesSample
 {
-    internal class StartUp : IStartUp
+    public interface IOperation
     {
-        private readonly ILogger<StartUp> logger;
-        private readonly IService service;
+        string OperationId { get; }
+    }
 
-        public StartUp(ILogger<StartUp> logger, IService service)
+    public interface ITransientOperation : IOperation
+    {
+    }
+
+    public interface IScopedOperation : IOperation
+    {
+    }
+
+    public interface ISingletonOperation : IOperation
+    {
+    }
+
+    public class DefaultOperation :
+        ITransientOperation,
+        IScopedOperation,
+        ISingletonOperation
+    {
+        public string OperationId { get; } = Guid.NewGuid().ToString()[^4..];
+    }
+
+    public class OperationLogger
+    {
+        private readonly ITransientOperation transientOperation;
+        private readonly IScopedOperation scopedOperation;
+        private readonly ISingletonOperation singletonOperation;
+
+        public OperationLogger(ITransientOperation transientOperation, IScopedOperation scopedOperation, ISingletonOperation singletonOperation) =>
+            (this.transientOperation, this.scopedOperation, this.singletonOperation) = (transientOperation, scopedOperation, singletonOperation);
+
+        public void LogOperations(string scope)
         {
-            this.logger = logger;
-            this.service = service;
+            LogOperation(transientOperation, scope, "Always different");
+            LogOperation(scopedOperation, scope, "Changes only with scope");
+            LogOperation(singletonOperation, scope, "Always the same");
         }
 
-        public async Task RunAsync()
-        {
-            logger.LogInformation("Running Startup");
-            await service.ExecuteAsync();
-        }
+        private static void LogOperation<T>(T operation, string scope, string message) where T : IOperation =>
+            Console.WriteLine($"{scope}: {typeof(T).Name,-19} [ {operation.OperationId}...{message,-23} ]");
     }
 }
