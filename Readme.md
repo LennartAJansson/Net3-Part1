@@ -4,7 +4,7 @@
 
 These sessions will focus mainly on how to use NET Core to produce solid code following various well known patterns and practices. We will not have any Powerpoints or other kind of presentation material except plain code samples because these sessions are only about, coding!
 
-NET Core 3.x Extensions library which is the current LTS version has been heavily refactored since versions 2.x and this document is for all of you that have used the older versions but also if you haven't been in contact at all with NET Core before. 
+NET Core 3.x Extensions library which is the current LTS version has been heavily refactored since versions 2.x and these sessions are for all of you that have used the older versions but also if you haven't been in contact at all with NET Core before. 
 
 In this first session I will show you the basics of some of the building blocks included in NET Core Extensions to get you up to speed using them.
 
