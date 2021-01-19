@@ -35,7 +35,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleScopesSample", "Cons
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Basics in HostedService", "3. Basics in HostedService", "{0B8C41FA-F667-441B-97F0-89B6AB8D8759}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostApplicationLifetimeSample", "HostApplicationLifetimeSample\HostApplicationLifetimeSample.csproj", "{0F82B0CC-6ABE-4F78-8FF8-C939BCBBC502}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HostApplicationLifetimeSample", "HostApplicationLifetimeSample\HostApplicationLifetimeSample.csproj", "{0F82B0CC-6ABE-4F78-8FF8-C939BCBBC502}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsingSerilog", "UsingSerilog\UsingSerilog.csproj", "{EAFC5445-8996-40CF-9ACC-0C4631C2BB0C}"
 EndProject
@@ -44,7 +44,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Readme.md = Readme.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IHostedServiceSample", "IHostedServiceSample\IHostedServiceSample.csproj", "{E9A818B0-B12E-441B-BF05-A31E935E53FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IHostedServiceSample", "IHostedServiceSample\IHostedServiceSample.csproj", "{E9A818B0-B12E-441B-BF05-A31E935E53FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

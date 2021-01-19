@@ -9,7 +9,7 @@
         DataContext="{Binding Source={StaticResource Locator}, Path=MainViewModel}">
     <StackPanel Orientation="Vertical">
         <ListBox ItemsSource="{Binding Folders}" SelectedItem="{Binding SelectedFolder}" />
-        <TextBox Width="120" Height="32" Text="{Binding SelectedFolder}" />
+        <TextBox Width="400" Height="18" Text="{Binding SelectedFolder}" />
         <Button Command="{Binding GetCommand}" Content="Refresh" Width="120" Height="32" />
     </StackPanel>
 </Window>

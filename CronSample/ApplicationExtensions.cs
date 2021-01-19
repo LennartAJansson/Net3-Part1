@@ -7,7 +7,7 @@ namespace CronSample
 {
     public static class ApplicationExtensions
     {
-        public static async Task RunApplication(this IHost host)
+        public static async Task RunApplicationAsync(this IHost host)
         {
             await host.StartAsync();
 

@@ -7,16 +7,10 @@ namespace CronSample
 {
     internal static class Program
     {
-        private static async Task Main(string[] args) => await Host.CreateDefaultBuilder(args)
-                .ConfigureServices(services => ConfigureAppServices(services))
-                .Build()
-                .RunApplication();
+        private static async Task Main(string[] args) => await CreateHostBuilder(args).Build().RunApplicationAsync();
 
-        private static IServiceCollection ConfigureAppServices(IServiceCollection services)
-        {
-            services.AddTransient<IWorker, Worker>();
-
-            return services;
-        }
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureServices(services => services.AddTransient<IWorker, Worker>());
     }
 }
