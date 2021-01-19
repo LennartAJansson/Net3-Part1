@@ -2,17 +2,15 @@
 
 ## Background
 
-These sessions will focus mainly on how to use NET Core to produce solid code following various well known patterns and practices. 
+These sessions will focus mainly on how to use NET Core to produce solid code following various well known patterns and practices. We will not have any Powerpoints or other kind of presentation material except plain code samples because these sessions are only about, coding!
 
-NET Core 3.x Extensions library has been heavily refactored since versions 2.x and this documents is for all of you that have used the older versions but also if you haven't been in contact with NET Core before. 
-
-The three sessions will focus on coding techniques and how to use Microsoft.Extensions in a proper way to create all kinds of applications in NET Core 3.x
+NET Core 3.x Extensions library which is the current LTS version has been heavily refactored since versions 2.x and this document is for all of you that have used the older versions but also if you haven't been in contact at all with NET Core before. 
 
 In this first session I will show you the basics of some of the building blocks included in NET Core Extensions to get you up to speed using them.
 
 In session two we will have a deeper look into NET Core. We will look at Entity Framework Core using Code First and also how to write your own extensions in a simple way. 
 
-Session three we will play around a bit with what we have seen and do some kind of rounding up of what you have seen. Finally will have a brief look at NET 5 and what differs from earlier versions.   
+Session three we will play around a bit with what we have seen and do some kind of rounding up of what you have seen. Finally we will have a brief look at NET 5 and what differs from earlier versions, we will also look at the future of NET and discuss Microsoft's plans regarding updates and lifecycle.   
 
 ## Demos
 
