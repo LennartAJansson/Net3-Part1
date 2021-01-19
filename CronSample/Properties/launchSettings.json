@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "CronSample": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
