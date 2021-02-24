@@ -9,7 +9,7 @@ namespace MonitoredConfiguration.Configuration
         public static IServiceCollection AddApplicationConfiguration(this IServiceCollection services, HostBuilderContext hostBuilder)
         {
             //To get an instance of a specific setting using ConfigurationBinder:
-            //var setting = hostBuilder.Configuration.GetSection(CmdGroupSettings.GroupName).Get<EnvGroupSettings>();
+            //var setting = hostBuilder.Configuration.GetSection(CmdGroup.Section).Get<CmdGroup>();
 
             services.Configure<JsonGroup>(hostBuilder.Configuration.GetSection(JsonGroup.Section));
             services.Configure<EnvGroup>(settings =>
